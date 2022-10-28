@@ -23,3 +23,11 @@ Pasos a seguir para iniciar el proyecto en local:
 13. 'npm run dev'
 14. Abrimos el navegador y entramos en http://localhost:5173/
 15. Listo :)
+
+Manual de usuario: 
+
+La web se divide en 3 vistas:  Una vista de bienvenida con unas graciosas fotos de perros, una vista con un formulario y una vista para ver todos los perros que vas introduciendo. 
+
+Para moverse entre vistas, tienes un navegador en la parte superior (header) con 3 links a los que puedes ir clicando en todo momento. 
+
+En el formulario tienes que rellenar todos los campos (algunos tienen valores por default y otros no).
