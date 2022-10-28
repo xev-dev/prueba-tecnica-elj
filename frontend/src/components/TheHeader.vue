@@ -26,4 +26,10 @@ header {
     height: 10%;
     align-items: center;
 }
+@media (max-width:420px) {
+  a{
+    font-size: 14px;
+  }
+}
+
 </style>

@@ -25,3 +25,9 @@ nav a.router-link-active{
   }
 }
 
+@media (max-width:880px) {
+  main {
+    flex-direction: column;
+  }
+}
+

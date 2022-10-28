@@ -22,6 +22,7 @@
       tabulator.value = new Tabulator(table.value, {
         data: tableData.value, 
         reactiveData:true, 
+        responsiveLayout:'collapse',
         height:"80%",
         columns: [
             {title:'Imagen',field:'img', formatter:printImg},
