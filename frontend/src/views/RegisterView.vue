@@ -1,26 +1,32 @@
 <script setup>
 import { reactive, ref } from 'vue';
 import { useToast } from "vue-toastification";
+import { registerDog } from "@/api"
+import {useLoading} from 'vue-loading-overlay'
 const hovered = ref(false);
+const loading = useLoading();
+const toast = useToast();
 const dogInfo = reactive({
   img: '/src/assets/background.png',
   age: 0,
   race: '',
   size: '',
-  color: '',
+  color: '#000000',
   castrated: false
 })
-async function onSubmit(event){
-  event.preventDefault();
-  const response = await fetch('http://localhost:8000/api/dog', {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(dogInfo),
-  })
-  const json = response.json();
-  console.log(json);
+async function onSubmit(){;
+  if(!isValid()){
+    toast.error('¡Has de rellenar todos los campos del formulario!');
+    return;
+  }
+  const loader = loading.show();
+  try{
+    await registerDog(dogInfo);
+    toast.success('¡El perro se ha registrado correctamente! :)');
+  }catch{
+    toast.error('¡No se ha podido registrar el perro correctamente! Intentelo de nuevo mas tarde...');
+  }
+  loader.hide();
 }
 function createBase64Image(e) {
     const file = e.target.files[0];
@@ -29,6 +35,11 @@ function createBase64Image(e) {
     reader.onload = () => {
       dogInfo.img = reader.result;
     }
+}
+function isValid(){
+  return (dogInfo.race!=='' 
+  && dogInfo.size!=='' 
+  && dogInfo.img!=='/src/assets/background.png' );
 }
 </script>
 
@@ -73,12 +84,11 @@ function createBase64Image(e) {
         {{dogInfo.age}}
       </label>
       <label>
-        Castrado
+        ¿Esta castrado?
         <input v-model="dogInfo.castrated" type="checkbox">
       </label>
       <button type="submit">Terminar registro</button>
     </form>
-
   </main>
 </template>
 

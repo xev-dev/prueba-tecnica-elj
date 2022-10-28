@@ -3,7 +3,7 @@ import { ref } from 'vue';
 const imageIndex = ref(0);
 setInterval(function () {
   imageIndex.value++;
-  if(imageIndex.value>4){
+  if(imageIndex.value>3){
     imageIndex.value = 0;
   }
 }, 2000);

@@ -18,7 +18,7 @@ class CreateDogsTable extends Migration
             $table->string('race');
             $table->string('size');
             $table->string('color');
-            $table->text('img');
+            $table->string('img');
             $table->smallInteger('age');
             $table->boolean('castrated');
             $table->timestamps();
